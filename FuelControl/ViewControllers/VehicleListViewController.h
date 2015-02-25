@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  VehicleListViewController.h
 //  FuelControl
 //
 //  Created by Papio on 2/25/15.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface VehicleListViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
 
 @end
-

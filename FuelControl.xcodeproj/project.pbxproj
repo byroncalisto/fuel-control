@@ -9,11 +9,14 @@
 /* Begin PBXBuildFile section */
 		91ABA1831A9E6D6500F00CB9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 91ABA1821A9E6D6500F00CB9 /* main.m */; };
 		91ABA1861A9E6D6500F00CB9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 91ABA1851A9E6D6500F00CB9 /* AppDelegate.m */; };
-		91ABA1891A9E6D6500F00CB9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91ABA1881A9E6D6500F00CB9 /* ViewController.m */; };
 		91ABA18C1A9E6D6500F00CB9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91ABA18A1A9E6D6500F00CB9 /* Main.storyboard */; };
 		91ABA18E1A9E6D6500F00CB9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91ABA18D1A9E6D6500F00CB9 /* Images.xcassets */; };
 		91ABA1911A9E6D6500F00CB9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91ABA18F1A9E6D6500F00CB9 /* LaunchScreen.xib */; };
 		91ABA19D1A9E6D6500F00CB9 /* FuelControlTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 91ABA19C1A9E6D6500F00CB9 /* FuelControlTests.m */; };
+		91ABA1AA1A9E72F400F00CB9 /* VehicleListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91ABA1A91A9E72F400F00CB9 /* VehicleListViewController.m */; };
+		91ABA1AE1A9E73C800F00CB9 /* FuelControlModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 91ABA1AC1A9E73C800F00CB9 /* FuelControlModel.xcdatamodeld */; };
+		91ABA1B11A9E75B900F00CB9 /* Vehicle.m in Sources */ = {isa = PBXBuildFile; fileRef = 91ABA1B01A9E75B900F00CB9 /* Vehicle.m */; };
+		91ABA1B41A9E75BA00F00CB9 /* FuelEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 91ABA1B31A9E75BA00F00CB9 /* FuelEntry.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,14 +35,19 @@
 		91ABA1821A9E6D6500F00CB9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		91ABA1841A9E6D6500F00CB9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		91ABA1851A9E6D6500F00CB9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		91ABA1871A9E6D6500F00CB9 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		91ABA1881A9E6D6500F00CB9 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		91ABA18B1A9E6D6500F00CB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		91ABA18D1A9E6D6500F00CB9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		91ABA1901A9E6D6500F00CB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		91ABA1961A9E6D6500F00CB9 /* FuelControlTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FuelControlTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		91ABA19B1A9E6D6500F00CB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		91ABA19C1A9E6D6500F00CB9 /* FuelControlTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FuelControlTests.m; sourceTree = "<group>"; };
+		91ABA1A81A9E72F400F00CB9 /* VehicleListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VehicleListViewController.h; path = ViewControllers/VehicleListViewController.h; sourceTree = "<group>"; };
+		91ABA1A91A9E72F400F00CB9 /* VehicleListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VehicleListViewController.m; path = ViewControllers/VehicleListViewController.m; sourceTree = "<group>"; };
+		91ABA1AD1A9E73C800F00CB9 /* FuelControlModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FuelControlModel.xcdatamodel; sourceTree = "<group>"; };
+		91ABA1AF1A9E75B900F00CB9 /* Vehicle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Vehicle.h; path = Model/Entities/Vehicle.h; sourceTree = "<group>"; };
+		91ABA1B01A9E75B900F00CB9 /* Vehicle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Vehicle.m; path = Model/Entities/Vehicle.m; sourceTree = "<group>"; };
+		91ABA1B21A9E75BA00F00CB9 /* FuelEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FuelEntry.h; path = Model/Entities/FuelEntry.h; sourceTree = "<group>"; };
+		91ABA1B31A9E75BA00F00CB9 /* FuelEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FuelEntry.m; path = Model/Entities/FuelEntry.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,14 +89,15 @@
 		91ABA17F1A9E6D6500F00CB9 /* FuelControl */ = {
 			isa = PBXGroup;
 			children = (
+				91ABA1A71A9E71E800F00CB9 /* Model */,
+				91ABA1A61A9E71E200F00CB9 /* ViewControllers */,
 				91ABA1841A9E6D6500F00CB9 /* AppDelegate.h */,
 				91ABA1851A9E6D6500F00CB9 /* AppDelegate.m */,
-				91ABA1871A9E6D6500F00CB9 /* ViewController.h */,
-				91ABA1881A9E6D6500F00CB9 /* ViewController.m */,
 				91ABA18A1A9E6D6500F00CB9 /* Main.storyboard */,
 				91ABA18D1A9E6D6500F00CB9 /* Images.xcassets */,
 				91ABA18F1A9E6D6500F00CB9 /* LaunchScreen.xib */,
 				91ABA1801A9E6D6500F00CB9 /* Supporting Files */,
+				91ABA1AC1A9E73C800F00CB9 /* FuelControlModel.xcdatamodeld */,
 			);
 			path = FuelControl;
 			sourceTree = "<group>";
@@ -117,6 +126,34 @@
 				91ABA19B1A9E6D6500F00CB9 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		91ABA1A61A9E71E200F00CB9 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				91ABA1A81A9E72F400F00CB9 /* VehicleListViewController.h */,
+				91ABA1A91A9E72F400F00CB9 /* VehicleListViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		91ABA1A71A9E71E800F00CB9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				91ABA1AB1A9E739800F00CB9 /* Entities */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		91ABA1AB1A9E739800F00CB9 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				91ABA1B21A9E75BA00F00CB9 /* FuelEntry.h */,
+				91ABA1B31A9E75BA00F00CB9 /* FuelEntry.m */,
+				91ABA1AF1A9E75B900F00CB9 /* Vehicle.h */,
+				91ABA1B01A9E75B900F00CB9 /* Vehicle.m */,
+			);
+			name = Entities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,9 +256,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				91ABA1891A9E6D6500F00CB9 /* ViewController.m in Sources */,
 				91ABA1861A9E6D6500F00CB9 /* AppDelegate.m in Sources */,
+				91ABA1AA1A9E72F400F00CB9 /* VehicleListViewController.m in Sources */,
 				91ABA1831A9E6D6500F00CB9 /* main.m in Sources */,
+				91ABA1AE1A9E73C800F00CB9 /* FuelControlModel.xcdatamodeld in Sources */,
+				91ABA1B41A9E75BA00F00CB9 /* FuelEntry.m in Sources */,
+				91ABA1B11A9E75B900F00CB9 /* Vehicle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,6 +462,19 @@
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		91ABA1AC1A9E73C800F00CB9 /* FuelControlModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				91ABA1AD1A9E73C800F00CB9 /* FuelControlModel.xcdatamodel */,
+			);
+			currentVersion = 91ABA1AD1A9E73C800F00CB9 /* FuelControlModel.xcdatamodel */;
+			path = FuelControlModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 91ABA1751A9E6D6500F00CB9 /* Project object */;
 }
