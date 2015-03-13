@@ -17,6 +17,7 @@
 		91ABA1AE1A9E73C800F00CB9 /* FuelControlModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 91ABA1AC1A9E73C800F00CB9 /* FuelControlModel.xcdatamodeld */; };
 		91ABA1B41A9E75BA00F00CB9 /* FuelEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 91ABA1B31A9E75BA00F00CB9 /* FuelEntry.m */; };
 		D76377D41AB14339003D72A8 /* Vehicle.m in Sources */ = {isa = PBXBuildFile; fileRef = D76377D31AB14339003D72A8 /* Vehicle.m */; };
+		D769A4E61AB2927200AE90E2 /* EditVehicleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D769A4E51AB2927200AE90E2 /* EditVehicleViewController.m */; };
 		D780F6241AB10556004327F6 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D780F6231AB10556004327F6 /* StoreKit.framework */; };
 		D780F6291AB10C10004327F6 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D780F6281AB10C10004327F6 /* DataManager.m */; };
 /* End PBXBuildFile section */
@@ -50,6 +51,8 @@
 		91ABA1B31A9E75BA00F00CB9 /* FuelEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FuelEntry.m; path = Model/Entities/FuelEntry.m; sourceTree = "<group>"; };
 		D76377D21AB14339003D72A8 /* Vehicle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Vehicle.h; path = Model/Entities/Vehicle.h; sourceTree = "<group>"; };
 		D76377D31AB14339003D72A8 /* Vehicle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Vehicle.m; path = Model/Entities/Vehicle.m; sourceTree = "<group>"; };
+		D769A4E41AB2927200AE90E2 /* EditVehicleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditVehicleViewController.h; path = ViewControllers/EditVehicleViewController.h; sourceTree = "<group>"; };
+		D769A4E51AB2927200AE90E2 /* EditVehicleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditVehicleViewController.m; path = ViewControllers/EditVehicleViewController.m; sourceTree = "<group>"; };
 		D780F6231AB10556004327F6 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		D780F6271AB10C10004327F6 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataManager.h; path = Model/Managers/DataManager.h; sourceTree = "<group>"; };
 		D780F6281AB10C10004327F6 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataManager.m; path = Model/Managers/DataManager.m; sourceTree = "<group>"; };
@@ -140,6 +143,8 @@
 			children = (
 				91ABA1A81A9E72F400F00CB9 /* VehicleListViewController.h */,
 				91ABA1A91A9E72F400F00CB9 /* VehicleListViewController.m */,
+				D769A4E41AB2927200AE90E2 /* EditVehicleViewController.h */,
+				D769A4E51AB2927200AE90E2 /* EditVehicleViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -290,6 +295,7 @@
 				91ABA1861A9E6D6500F00CB9 /* AppDelegate.m in Sources */,
 				91ABA1AA1A9E72F400F00CB9 /* VehicleListViewController.m in Sources */,
 				D780F6291AB10C10004327F6 /* DataManager.m in Sources */,
+				D769A4E61AB2927200AE90E2 /* EditVehicleViewController.m in Sources */,
 				D76377D41AB14339003D72A8 /* Vehicle.m in Sources */,
 				91ABA1831A9E6D6500F00CB9 /* main.m in Sources */,
 				91ABA1AE1A9E73C800F00CB9 /* FuelControlModel.xcdatamodeld in Sources */,
