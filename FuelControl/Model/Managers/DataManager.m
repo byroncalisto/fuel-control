@@ -8,6 +8,8 @@
 
 #import "DataManager.h"
 
+NSString * const DataManagerReadyNotification = @"DataManagerReadyNotification";
+
 @interface DataManager ()
 
 @property (nonatomic, strong) UIManagedDocument *document;
@@ -29,6 +31,33 @@
     });
     
     return dataManager;
+}
+
+#pragma mark - Public Methods
+
+- (void)saveDataObject:(NSManagedObject *)dataObject withCompletionHandler:(void (^)(BOOL))completionHandler
+{
+    NSError *error;
+    
+    if (![dataObject.managedObjectContext save:&error]) {
+        [self handleDataError:error];
+        completionHandler(NO);
+    }
+    else
+        [self.document saveToURL:self.document.fileURL
+                forSaveOperation:UIDocumentSaveForOverwriting
+               completionHandler:completionHandler];
+}
+
+- (void)handleDataError:(NSError *)error
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Data Error"
+                                                    message:[NSString stringWithFormat:@"A data error has occurred: %@", error.localizedDescription]
+                                                   delegate:nil
+                                          cancelButtonTitle:@"Dismiss"
+                                          otherButtonTitles:nil];
+    
+    [alert show];
 }
 
 #pragma mark - Internal Methods
@@ -65,6 +94,8 @@
 {
     if (self.document.documentState == UIDocumentStateNormal) {
         self.context = self.document.managedObjectContext;
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:DataManagerReadyNotification object:nil];
     }
 }
 

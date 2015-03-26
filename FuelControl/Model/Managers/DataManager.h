@@ -12,8 +12,12 @@
 
 @interface DataManager : NSObject
 
+extern NSString * const DataManagerReadyNotification;
+
 @property (nonatomic, strong) NSManagedObjectContext *context;
 
 + (instancetype)instance;
+- (void)saveDataObject:(NSManagedObject *)dataObject withCompletionHandler:(void (^)(BOOL success))completionHandler;
+- (void)handleDataError:(NSError *)error;
 
 @end

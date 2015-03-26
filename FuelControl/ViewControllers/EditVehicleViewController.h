@@ -6,8 +6,22 @@
 //  Copyright (c) 2015 PapiusSoft. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
+@import CoreData;
 
-@interface EditVehicleViewController : UITableViewController <UITextFieldDelegate>
+#import "Vehicle.h"
+
+@protocol EditVehicleViewDelegate;
+
+@interface EditVehicleViewController : UITableViewController <UITextFieldDelegate, UIAlertViewDelegate>
+
+@property (nonatomic, strong) Vehicle *vehicle;
+@property (nonatomic, weak) id<EditVehicleViewDelegate> delegate;
+
+@end
+
+@protocol EditVehicleViewDelegate <NSObject>
+
+- (void)vehicleDidSave:(EditVehicleViewController *)editVehicleVC;
 
 @end

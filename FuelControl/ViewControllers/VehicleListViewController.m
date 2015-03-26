@@ -7,92 +7,157 @@
 //
 
 #import "VehicleListViewController.h"
-#import "EditVehicleViewController.h"
+#import "DataManager.h"
 
 @interface VehicleListViewController ()
+
+@property (nonatomic, strong) NSFetchedResultsController *resultsController;
 
 @end
 
 @implementation VehicleListViewController
 
+#pragma mark - View initialization
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(loadVehicleData:)
+                                                 name:DataManagerReadyNotification
+                                               object:nil];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self reloadVehicleData];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - Vehicle Data management
+
+- (void)loadVehicleData:(NSNotification *)notification
+{
+    [self reloadVehicleData];
+}
+
+- (void)reloadVehicleData
+{
+    DataManager *dataManager = [DataManager instance];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    if (dataManager.context) {
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Vehicle"];
+        [fetchRequest setSortDescriptors:@[
+                                           [NSSortDescriptor sortDescriptorWithKey:@"make" ascending:YES],
+                                           [NSSortDescriptor sortDescriptorWithKey:@"model" ascending:YES]]];
+        
+        self.resultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                                                     managedObjectContext:dataManager.context
+                                                                       sectionNameKeyPath:nil
+                                                                                cacheName:nil];
+        
+        NSError *error;
+        [self.resultsController performFetch:&error];
+        
+        
+        if (error) {
+            NSLog(@"Error during fetch: %@, %@", error, error.localizedDescription);
+        }
+        else
+            [self.tableView reloadData];
+    }
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
+    if (self.resultsController)
+        return [self.resultsController.sections count];
+    
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
+    if (self.resultsController) {
+        NSArray *sections = self.resultsController.sections;
+        id<NSFetchedResultsSectionInfo> sectionInfo = sections[section];
+        
+        return [sectionInfo numberOfObjects];
+    }
+    
     return 0;
 }
 
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.resultsController) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"VehicleCell"];
+        
+        Vehicle *vehicleItem = (Vehicle *)[self.resultsController objectAtIndexPath:indexPath];
+        cell.textLabel.text = [NSString stringWithFormat:@"%@ %@ %@", vehicleItem.make, vehicleItem.model, vehicleItem.year];
+        
+        return cell;
+    }
     
-    // Configure the cell...
+    return nil;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if (self.resultsController) {
+        NSArray *sections = self.resultsController.sections;
+        id<NSFetchedResultsSectionInfo> sectionInfo = sections[section];
+        
+        if ([sectionInfo numberOfObjects] == 0)
+            return @"Tap Add to create a new Vehicle";
+    }
     
-    return cell;
+    return @"Select a Vehicle";
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+#pragma mark - Table view delegate
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    [self performSegueWithIdentifier:@"EditVehicleSegue" sender:indexPath];
 }
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
+#pragma mark - Edit Vehicle Delegate
+
+- (void)vehicleDidSave:(EditVehicleViewController *)editVehicleVC
+{
+    [self reloadVehicleData];
+    [editVehicleVC.navigationController popViewControllerAnimated:YES];
 }
-*/
 
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"AddVehicleSegue"]) {
         EditVehicleViewController *editVehicleVC = (EditVehicleViewController *)segue.destinationViewController;
+        
+        editVehicleVC.delegate = self;
         editVehicleVC.navigationItem.title = @"Add Vehicle";
+    }
+    else if ([segue.identifier isEqualToString:@"EditVehicleSegue"] && sender) {
+        NSIndexPath *indexPath = (NSIndexPath *)sender;
+        EditVehicleViewController *editVehicleVC = (EditVehicleViewController *)segue.destinationViewController;
+        
+        editVehicleVC.delegate = self;
+        editVehicleVC.vehicle = (Vehicle *)[self.resultsController objectAtIndexPath:indexPath];
+        editVehicleVC.navigationItem.title = @"Edit Vehicle";
     }
 }
 

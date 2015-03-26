@@ -6,8 +6,11 @@
 //  Copyright (c) 2015 PapiusSoft. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
+@import CoreData;
 
-@interface VehicleListViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
+#import "EditVehicleViewController.h"
+
+@interface VehicleListViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, EditVehicleViewDelegate>
 
 @end

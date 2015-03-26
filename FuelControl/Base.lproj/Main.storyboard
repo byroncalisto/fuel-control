@@ -38,7 +38,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="GUr-Lk-T6V" kind="show" identifier="EditVehicleSegue" trigger="accessoryAction" id="YQa-Vc-ghq"/>
+                                    <segue destination="GUr-Lk-T6V" kind="show" identifier="EditVehicleSegue" id="lpF-kh-vX6"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -69,7 +69,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
-                            <tableViewSection id="Zfq-ui-LNY">
+                            <tableViewSection headerTitle="Enter Vehicle Info" id="Zfq-ui-LNY">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MakeCell" id="fzu-af-mKc">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -178,6 +178,32 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection id="DRg-tT-ngi">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DeleteCell" id="oqn-qY-MJP">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oqn-qY-MJP" id="vwy-Me-Pfy">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete Vehicle" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZeY-nJ-WA2">
+                                                    <rect key="frame" x="244" y="11" width="112" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="112" id="XXt-9m-FbM"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ZeY-nJ-WA2" firstAttribute="centerY" secondItem="vwy-Me-Pfy" secondAttribute="centerY" id="7Ce-MM-6sN"/>
+                                                <constraint firstItem="ZeY-nJ-WA2" firstAttribute="centerX" secondItem="vwy-Me-Pfy" secondAttribute="centerX" id="HFP-3h-fhs"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="GUr-Lk-T6V" id="Iig-c0-67j"/>
@@ -199,7 +225,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5u7-5a-xdh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2364" y="-377"/>
+            <point key="canvasLocation" x="2364" y="-378"/>
         </scene>
         <!--Fuelings-->
         <scene sceneID="bUl-CH-HmG">
@@ -220,6 +246,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="YAf-B8-5Rs"/>
+        <segue reference="lpF-kh-vX6"/>
     </inferredMetricsTieBreakers>
 </document>
