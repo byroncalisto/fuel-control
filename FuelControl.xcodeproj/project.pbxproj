@@ -20,6 +20,7 @@
 		D769A4E61AB2927200AE90E2 /* EditVehicleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D769A4E51AB2927200AE90E2 /* EditVehicleViewController.m */; };
 		D780F6241AB10556004327F6 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D780F6231AB10556004327F6 /* StoreKit.framework */; };
 		D780F6291AB10C10004327F6 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D780F6281AB10C10004327F6 /* DataManager.m */; };
+		D7933B071AC506B0003D1F84 /* FuelingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7933B061AC506B0003D1F84 /* FuelingsTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,8 @@
 		D780F6231AB10556004327F6 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		D780F6271AB10C10004327F6 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataManager.h; path = Model/Managers/DataManager.h; sourceTree = "<group>"; };
 		D780F6281AB10C10004327F6 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataManager.m; path = Model/Managers/DataManager.m; sourceTree = "<group>"; };
+		D7933B051AC506B0003D1F84 /* FuelingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FuelingsTableViewController.h; path = ViewControllers/FuelingsTableViewController.h; sourceTree = "<group>"; };
+		D7933B061AC506B0003D1F84 /* FuelingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FuelingsTableViewController.m; path = ViewControllers/FuelingsTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +148,8 @@
 				91ABA1A91A9E72F400F00CB9 /* VehicleListViewController.m */,
 				D769A4E41AB2927200AE90E2 /* EditVehicleViewController.h */,
 				D769A4E51AB2927200AE90E2 /* EditVehicleViewController.m */,
+				D7933B051AC506B0003D1F84 /* FuelingsTableViewController.h */,
+				D7933B061AC506B0003D1F84 /* FuelingsTableViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -297,6 +302,7 @@
 				D780F6291AB10C10004327F6 /* DataManager.m in Sources */,
 				D769A4E61AB2927200AE90E2 /* EditVehicleViewController.m in Sources */,
 				D76377D41AB14339003D72A8 /* Vehicle.m in Sources */,
+				D7933B071AC506B0003D1F84 /* FuelingsTableViewController.m in Sources */,
 				91ABA1831A9E6D6500F00CB9 /* main.m in Sources */,
 				91ABA1AE1A9E73C800F00CB9 /* FuelControlModel.xcdatamodeld in Sources */,
 				91ABA1B41A9E75BA00F00CB9 /* FuelEntry.m in Sources */,

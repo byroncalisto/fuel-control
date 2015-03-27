@@ -7,6 +7,7 @@
 //
 
 #import "VehicleListViewController.h"
+#import "FuelingsTableViewController.h"
 #import "DataManager.h"
 
 @interface VehicleListViewController ()
@@ -132,7 +133,6 @@
     [self performSegueWithIdentifier:@"EditVehicleSegue" sender:indexPath];
 }
 
-
 #pragma mark - Edit Vehicle Delegate
 
 - (void)vehicleDidSave:(EditVehicleViewController *)editVehicleVC
@@ -158,6 +158,15 @@
         editVehicleVC.delegate = self;
         editVehicleVC.vehicle = (Vehicle *)[self.resultsController objectAtIndexPath:indexPath];
         editVehicleVC.navigationItem.title = @"Edit Vehicle";
+    }
+    else if ([segue.identifier isEqualToString:@"EditFuelSegue"] && sender) {
+        UITableViewCell *selectedCell = (UITableViewCell *)sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:selectedCell];
+        FuelingsTableViewController *fuelingsTableVC = (FuelingsTableViewController *)segue.destinationViewController;
+        
+        Vehicle *selectedVehicle = (Vehicle *)[self.resultsController objectAtIndexPath:indexPath];
+        fuelingsTableVC.vehicle = selectedVehicle;
+        fuelingsTableVC.navigationItem.title = [NSString stringWithFormat:@"%@ %@ %@", selectedVehicle.make, selectedVehicle.model, selectedVehicle.year];
     }
 }
 
