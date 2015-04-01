@@ -21,6 +21,8 @@
 		D780F6241AB10556004327F6 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D780F6231AB10556004327F6 /* StoreKit.framework */; };
 		D780F6291AB10C10004327F6 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D780F6281AB10C10004327F6 /* DataManager.m */; };
 		D7933B071AC506B0003D1F84 /* FuelingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7933B061AC506B0003D1F84 /* FuelingsTableViewController.m */; };
+		D79453F21AC8FC22006EFCC3 /* EditFuelEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D79453F11AC8FC22006EFCC3 /* EditFuelEntryViewController.m */; };
+		D7D290BC1ACBA987001A63C9 /* FuelEntry+FuelEntryExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D290BB1ACBA987001A63C9 /* FuelEntry+FuelEntryExtensions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,10 @@
 		D780F6281AB10C10004327F6 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataManager.m; path = Model/Managers/DataManager.m; sourceTree = "<group>"; };
 		D7933B051AC506B0003D1F84 /* FuelingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FuelingsTableViewController.h; path = ViewControllers/FuelingsTableViewController.h; sourceTree = "<group>"; };
 		D7933B061AC506B0003D1F84 /* FuelingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FuelingsTableViewController.m; path = ViewControllers/FuelingsTableViewController.m; sourceTree = "<group>"; };
+		D79453F01AC8FC22006EFCC3 /* EditFuelEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditFuelEntryViewController.h; path = ViewControllers/EditFuelEntryViewController.h; sourceTree = "<group>"; };
+		D79453F11AC8FC22006EFCC3 /* EditFuelEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditFuelEntryViewController.m; path = ViewControllers/EditFuelEntryViewController.m; sourceTree = "<group>"; };
+		D7D290BA1ACBA987001A63C9 /* FuelEntry+FuelEntryExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "FuelEntry+FuelEntryExtensions.h"; path = "Model/Extensions/FuelEntry+FuelEntryExtensions.h"; sourceTree = "<group>"; };
+		D7D290BB1ACBA987001A63C9 /* FuelEntry+FuelEntryExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "FuelEntry+FuelEntryExtensions.m"; path = "Model/Extensions/FuelEntry+FuelEntryExtensions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +156,8 @@
 				D769A4E51AB2927200AE90E2 /* EditVehicleViewController.m */,
 				D7933B051AC506B0003D1F84 /* FuelingsTableViewController.h */,
 				D7933B061AC506B0003D1F84 /* FuelingsTableViewController.m */,
+				D79453F01AC8FC22006EFCC3 /* EditFuelEntryViewController.h */,
+				D79453F11AC8FC22006EFCC3 /* EditFuelEntryViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -178,6 +186,8 @@
 		D780F6251AB10615004327F6 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				D7D290BA1ACBA987001A63C9 /* FuelEntry+FuelEntryExtensions.h */,
+				D7D290BB1ACBA987001A63C9 /* FuelEntry+FuelEntryExtensions.m */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -304,6 +314,8 @@
 				D76377D41AB14339003D72A8 /* Vehicle.m in Sources */,
 				D7933B071AC506B0003D1F84 /* FuelingsTableViewController.m in Sources */,
 				91ABA1831A9E6D6500F00CB9 /* main.m in Sources */,
+				D7D290BC1ACBA987001A63C9 /* FuelEntry+FuelEntryExtensions.m in Sources */,
+				D79453F21AC8FC22006EFCC3 /* EditFuelEntryViewController.m in Sources */,
 				91ABA1AE1A9E73C800F00CB9 /* FuelControlModel.xcdatamodeld in Sources */,
 				91ABA1B41A9E75BA00F00CB9 /* FuelEntry.m in Sources */,
 			);
