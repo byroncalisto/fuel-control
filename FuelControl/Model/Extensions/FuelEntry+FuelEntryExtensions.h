@@ -13,4 +13,16 @@
 
 @interface FuelEntry (FuelEntryExtensions)
 
+- (void)storeOdometer:(double)odometer;
+- (void)storeTrip:(double)trip;
+- (void)storeQuantity:(double)quantity;
+- (void)storeCalculatedYield:(double)calculatedYield;
+- (void)storeReportedYield:(double)reportedYield;
+
+- (double)convertedOdometer;
+- (double)convertedTrip;
+- (double)convertedQuantity;
+- (double)convertedCalculatedYield;
+- (double)convertedReportedYield;
+
 @end

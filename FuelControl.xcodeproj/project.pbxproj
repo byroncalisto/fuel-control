@@ -15,9 +15,10 @@
 		91ABA19D1A9E6D6500F00CB9 /* FuelControlTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 91ABA19C1A9E6D6500F00CB9 /* FuelControlTests.m */; };
 		91ABA1AA1A9E72F400F00CB9 /* VehicleListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91ABA1A91A9E72F400F00CB9 /* VehicleListViewController.m */; };
 		91ABA1AE1A9E73C800F00CB9 /* FuelControlModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 91ABA1AC1A9E73C800F00CB9 /* FuelControlModel.xcdatamodeld */; };
-		91ABA1B41A9E75BA00F00CB9 /* FuelEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 91ABA1B31A9E75BA00F00CB9 /* FuelEntry.m */; };
 		D76377D41AB14339003D72A8 /* Vehicle.m in Sources */ = {isa = PBXBuildFile; fileRef = D76377D31AB14339003D72A8 /* Vehicle.m */; };
 		D769A4E61AB2927200AE90E2 /* EditVehicleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D769A4E51AB2927200AE90E2 /* EditVehicleViewController.m */; };
+		D780D5261AD3809F00B3CCB2 /* SettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D780D5251AD3809F00B3CCB2 /* SettingsManager.m */; };
+		D780D5291AD392CB00B3CCB2 /* FuelEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = D780D5281AD392CB00B3CCB2 /* FuelEntry.m */; };
 		D780F6241AB10556004327F6 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D780F6231AB10556004327F6 /* StoreKit.framework */; };
 		D780F6291AB10C10004327F6 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D780F6281AB10C10004327F6 /* DataManager.m */; };
 		D7933B071AC506B0003D1F84 /* FuelingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7933B061AC506B0003D1F84 /* FuelingsTableViewController.m */; };
@@ -50,12 +51,14 @@
 		91ABA1A81A9E72F400F00CB9 /* VehicleListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VehicleListViewController.h; path = ViewControllers/VehicleListViewController.h; sourceTree = "<group>"; };
 		91ABA1A91A9E72F400F00CB9 /* VehicleListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VehicleListViewController.m; path = ViewControllers/VehicleListViewController.m; sourceTree = "<group>"; };
 		91ABA1AD1A9E73C800F00CB9 /* FuelControlModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FuelControlModel.xcdatamodel; sourceTree = "<group>"; };
-		91ABA1B21A9E75BA00F00CB9 /* FuelEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FuelEntry.h; path = Model/Entities/FuelEntry.h; sourceTree = "<group>"; };
-		91ABA1B31A9E75BA00F00CB9 /* FuelEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FuelEntry.m; path = Model/Entities/FuelEntry.m; sourceTree = "<group>"; };
 		D76377D21AB14339003D72A8 /* Vehicle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Vehicle.h; path = Model/Entities/Vehicle.h; sourceTree = "<group>"; };
 		D76377D31AB14339003D72A8 /* Vehicle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Vehicle.m; path = Model/Entities/Vehicle.m; sourceTree = "<group>"; };
 		D769A4E41AB2927200AE90E2 /* EditVehicleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditVehicleViewController.h; path = ViewControllers/EditVehicleViewController.h; sourceTree = "<group>"; };
 		D769A4E51AB2927200AE90E2 /* EditVehicleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditVehicleViewController.m; path = ViewControllers/EditVehicleViewController.m; sourceTree = "<group>"; };
+		D780D5241AD3809F00B3CCB2 /* SettingsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsManager.h; path = Model/Managers/SettingsManager.h; sourceTree = "<group>"; };
+		D780D5251AD3809F00B3CCB2 /* SettingsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsManager.m; path = Model/Managers/SettingsManager.m; sourceTree = "<group>"; };
+		D780D5271AD392CB00B3CCB2 /* FuelEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FuelEntry.h; path = Model/Entities/FuelEntry.h; sourceTree = "<group>"; };
+		D780D5281AD392CB00B3CCB2 /* FuelEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FuelEntry.m; path = Model/Entities/FuelEntry.m; sourceTree = "<group>"; };
 		D780F6231AB10556004327F6 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		D780F6271AB10C10004327F6 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataManager.h; path = Model/Managers/DataManager.h; sourceTree = "<group>"; };
 		D780F6281AB10C10004327F6 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataManager.m; path = Model/Managers/DataManager.m; sourceTree = "<group>"; };
@@ -175,10 +178,10 @@
 		91ABA1AB1A9E739800F00CB9 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				D780D5271AD392CB00B3CCB2 /* FuelEntry.h */,
+				D780D5281AD392CB00B3CCB2 /* FuelEntry.m */,
 				D76377D21AB14339003D72A8 /* Vehicle.h */,
 				D76377D31AB14339003D72A8 /* Vehicle.m */,
-				91ABA1B21A9E75BA00F00CB9 /* FuelEntry.h */,
-				91ABA1B31A9E75BA00F00CB9 /* FuelEntry.m */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -197,6 +200,8 @@
 			children = (
 				D780F6271AB10C10004327F6 /* DataManager.h */,
 				D780F6281AB10C10004327F6 /* DataManager.m */,
+				D780D5241AD3809F00B3CCB2 /* SettingsManager.h */,
+				D780D5251AD3809F00B3CCB2 /* SettingsManager.m */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -311,13 +316,14 @@
 				91ABA1AA1A9E72F400F00CB9 /* VehicleListViewController.m in Sources */,
 				D780F6291AB10C10004327F6 /* DataManager.m in Sources */,
 				D769A4E61AB2927200AE90E2 /* EditVehicleViewController.m in Sources */,
+				D780D5291AD392CB00B3CCB2 /* FuelEntry.m in Sources */,
+				D780D5261AD3809F00B3CCB2 /* SettingsManager.m in Sources */,
 				D76377D41AB14339003D72A8 /* Vehicle.m in Sources */,
 				D7933B071AC506B0003D1F84 /* FuelingsTableViewController.m in Sources */,
 				91ABA1831A9E6D6500F00CB9 /* main.m in Sources */,
 				D7D290BC1ACBA987001A63C9 /* FuelEntry+FuelEntryExtensions.m in Sources */,
 				D79453F21AC8FC22006EFCC3 /* EditFuelEntryViewController.m in Sources */,
 				91ABA1AE1A9E73C800F00CB9 /* FuelControlModel.xcdatamodeld in Sources */,
-				91ABA1B41A9E75BA00F00CB9 /* FuelEntry.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
