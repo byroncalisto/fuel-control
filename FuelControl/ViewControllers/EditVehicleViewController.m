@@ -88,8 +88,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0 && indexPath.section == 1) {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        
         UIAlertView *deleteAlert = [[UIAlertView alloc] initWithTitle:@"Delete Vehicle"
-                                                              message:@"Are you sure you want to permanently delete this vehicle and all its data?"
+                                                              message:@"Are you sure you want to permanently delete this vehicle and all of its data?"
                                                              delegate:self
                                                     cancelButtonTitle:@"No"
                                                     otherButtonTitles:@"Yes", nil];

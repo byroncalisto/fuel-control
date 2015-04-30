@@ -11,9 +11,18 @@
 #import "Vehicle.h"
 #import "FuelEntry+FuelEntryExtensions.h"
 
-@interface EditFuelEntryViewController : UITableViewController <UITextFieldDelegate>
+@protocol EditFuelEntryDelegate;
+
+@interface EditFuelEntryViewController : UITableViewController <UITextFieldDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, strong) Vehicle *vehicle;
 @property (nonatomic, strong) FuelEntry *fuelEntry;
+@property (nonatomic, weak) id<EditFuelEntryDelegate> delegate;
+
+@end
+
+@protocol EditFuelEntryDelegate <NSObject>
+
+- (void)fuelEntryDidSave:(EditFuelEntryViewController *)editFuelEntryVC;
 
 @end

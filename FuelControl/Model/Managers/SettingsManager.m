@@ -46,7 +46,7 @@
     self.symbolMap = @{
                        @(FCKilometers) : @"km",
                        @(FCMiles) : @"mi",
-                       @(FCLiters) : @"l",
+                       @(FCLiters) : @"lt",
                        @(FCGallonsImperial) : @"gal",
                        @(FCGallonsUS) :  @"gal"
                        };

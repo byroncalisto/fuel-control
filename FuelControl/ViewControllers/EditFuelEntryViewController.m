@@ -8,6 +8,7 @@
 
 #import "EditFuelEntryViewController.h"
 #import "SettingsManager.h"
+#import "DataManager.h"
 
 @interface EditFuelEntryViewController ()
 
@@ -54,6 +55,7 @@
     
     self.dateFormatter = [[NSDateFormatter alloc] init];
     self.dateFormatter.dateFormat = @"dd-MMM-yyyy";
+    self.dateFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
     
     UIDatePicker *datePicker = [[UIDatePicker alloc] init];
     datePicker.datePickerMode = UIDatePickerModeDate;
@@ -132,12 +134,25 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    id textObject = [cell viewWithTag:1];
-    
-    if (textObject && [textObject isKindOfClass:[UITextField class]]) {
-        UITextField *textField = (UITextField *)textObject;
-        [textField becomeFirstResponder];
+    if (indexPath.section == 0) {
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        id textObject = [cell viewWithTag:1];
+        
+        if (textObject && [textObject isKindOfClass:[UITextField class]]) {
+            UITextField *textField = (UITextField *)textObject;
+            [textField becomeFirstResponder];
+        }
+    }
+    else if (indexPath.section == 1 && indexPath.row == 0) {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Delete Fuel Entry"
+                                                        message:@"Are you sure you want to delete this fuel entry?"
+                                                       delegate:self
+                                              cancelButtonTitle:@"No"
+                                              otherButtonTitles:@"Yes", nil];
+        
+        [alert show];
     }
 }
 
@@ -169,21 +184,40 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    [self cleanInput:textField];
-    
-    if (textField == self.txtQuantity || textField == self.txtPricePerUnit ||
-        textField == self.txtTotalPrice || textField == self.txtTrip) {
-        [self calculateTotals:textField];
+    if (textField != self.txtDate) {
+        [self cleanInput:textField];
+        
+        if (textField == self.txtQuantity || textField == self.txtPricePerUnit ||
+            textField == self.txtTotalPrice || textField == self.txtTrip) {
+            [self calculateTotals:textField];
+        }
+        
+        if (textField == self.txtOdometer || textField == self.txtTrip ||
+            textField == self.txtQuantity || textField == self.txtReportedYield) {
+            double value = [textField.text doubleValue];
+            textField.text = [self.settings getFormattedUnits:value];
+        }
+        else if (textField == self.txtPricePerUnit || self.txtTotalPrice) {
+            double value = [textField.text doubleValue];
+            textField.text = [self.settings getFormattedPrice:value withSymbol:NO];
+        }
     }
-    
-    if (textField == self.txtOdometer || textField == self.txtTrip ||
-        textField == self.txtQuantity || textField == self.txtReportedYield) {
-        double value = [textField.text doubleValue];
-        textField.text = [self.settings getFormattedUnits:value];
-    }
-    else if (textField == self.txtPricePerUnit || self.txtTotalPrice) {
-        double value = [textField.text doubleValue];
-        textField.text = [self.settings getFormattedPrice:value withSymbol:NO];
+}
+
+#pragma mark - Alert view delegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1) {
+        DataManager *dataManager = [DataManager instance];
+        
+        [dataManager.context deleteObject:self.fuelEntry];
+        
+        [dataManager saveDataObject:self.fuelEntry
+              withCompletionHandler:^(BOOL success) {
+                  if (success)
+                      [self.delegate fuelEntryDidSave:self];
+              }];
     }
 }
 
@@ -200,7 +234,25 @@
     NSString *validationErrors = [self validationErrors];
     
     if (!validationErrors) {
+        DataManager *dataManager = [DataManager instance];
         
+        if (!self.fuelEntry) {
+            NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"FuelEntry" inManagedObjectContext:dataManager.context];
+            self.fuelEntry = [[FuelEntry alloc] initWithEntity:entityDescription insertIntoManagedObjectContext:dataManager.context];
+            
+            NSMutableSet *fuelEntriesCopy = [self.vehicle.fuelEntries mutableCopy];
+            [fuelEntriesCopy addObject:self.fuelEntry];
+            
+            self.vehicle.fuelEntries = fuelEntriesCopy;
+            
+            [dataManager saveDataObject:self.vehicle
+                  withCompletionHandler:^(BOOL success) {
+                      if (success)
+                          [self storeFuelEntry:self.fuelEntry];
+                  }];
+        }
+        else
+            [self storeFuelEntry:self.fuelEntry];
     }
     else {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Cannot save"
@@ -211,11 +263,6 @@
         
         [alert show];
     }
-}
-
-- (NSString *)validationErrors
-{
-    return nil;
 }
 
 #pragma mark - Keyboard Notification Handling
@@ -258,6 +305,55 @@
 }
 
 #pragma mark - Private Methods
+
+- (void)storeFuelEntry:(FuelEntry *)fuelEntry
+{
+    DataManager *dataManager = [DataManager instance];
+    
+    [fuelEntry storeOdometer:[self.txtOdometer.text doubleValue]];
+    [fuelEntry storeTrip:[self.txtTrip.text doubleValue]];
+    [fuelEntry storeQuantity:[self.txtQuantity.text doubleValue]];
+    [fuelEntry storeCalculatedYield:[self.txtCalculatedYield.text doubleValue]];
+    
+    fuelEntry.pricePerUnit = @([self.txtPricePerUnit.text doubleValue]);
+    fuelEntry.totalPrice = @([self.txtTotalPrice.text doubleValue]);
+    fuelEntry.date = ((UIDatePicker *)self.txtDate.inputView).date;
+    
+    if (self.txtReportedYield.text.length > 0)
+        [fuelEntry storeReportedYield:[self.txtReportedYield.text doubleValue]];
+    
+    [dataManager saveDataObject:self.fuelEntry
+          withCompletionHandler:^(BOOL success) {
+              if (success)
+                  [self.delegate fuelEntryDidSave:self];
+          }];
+}
+
+- (NSString *)validationErrors
+{
+    NSMutableString *errorSummary = [NSMutableString string];
+    NSString *errorFormat = @"\nEnter a value for %@";
+    
+    if (self.txtOdometer.text.length == 0)
+        [errorSummary appendFormat:errorFormat, @"Odometer"];
+    
+    if (self.txtTrip.text.length == 0)
+        [errorSummary appendFormat:errorFormat, @"Trip"];
+    
+    if (self.txtQuantity.text.length == 0)
+        [errorSummary appendFormat:errorFormat, @"Quantity"];
+    
+    if (self.txtPricePerUnit.text.length == 0)
+        [errorSummary appendFormat:errorFormat, @"Price per Unit"];
+    
+    if (self.txtTotalPrice.text.length == 0)
+        [errorSummary appendFormat:errorFormat, @"Total Price"];
+    
+    if (errorSummary.length > 0)
+        return errorSummary;
+    
+    return nil;
+}
 
 - (void)calculateTotals:(UITextField *)sender
 {
@@ -322,6 +418,8 @@
         NSTextCheckingResult *firstResult = (NSTextCheckingResult *)matches[0];
         textField.text = [fieldText substringWithRange:firstResult.range];
     }
+    else
+        textField.text = @"";
 }
 
 @end

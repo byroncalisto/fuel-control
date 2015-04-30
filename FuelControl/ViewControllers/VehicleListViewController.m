@@ -70,6 +70,7 @@
         
         if (error) {
             NSLog(@"Error during fetch: %@, %@", error, error.localizedDescription);
+            abort();
         }
         else
             [self.tableView reloadData];

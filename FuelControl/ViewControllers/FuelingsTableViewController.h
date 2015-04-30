@@ -9,8 +9,9 @@
 @import UIKit;
 
 #import "Vehicle.h"
+#import "EditFuelEntryViewController.h"
 
-@interface FuelingsTableViewController : UITableViewController
+@interface FuelingsTableViewController : UITableViewController <EditFuelEntryDelegate>
 
 @property (nonatomic, strong) Vehicle *vehicle;
 
